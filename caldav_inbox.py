@@ -1,6 +1,6 @@
 import configparser
 from typing import Tuple, Optional
-
+from pathlib import Path
 import caldav
 from datetime import datetime, timezone
 import uuid
@@ -8,7 +8,7 @@ import uuid
 def load_config() -> Optional[Tuple[str, str, str, str]]:
     """Reads CalDAV credentials and calendar name from config.ini."""
     config = configparser.ConfigParser()
-    config.read("config.ini")
+    config.read(Path.home() / "zfs-monitoring" / "config.ini")
     url = config["caldav"]["url"]
     username = config["caldav"]["username"]
     password = config["caldav"]["password"]
