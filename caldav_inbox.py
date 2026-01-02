@@ -33,4 +33,8 @@ def send_todo(todo_str: str):
         if not target_calendar:
             raise EnvironmentError(f"Error: Calendar '{calendar_name}' not found.")
 
-        target_calendar.add_todo(f"BEGIN:VTODO\nUID:{uuid.uuid4()}@zfs-monitoring\nDTSTAMP:{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")}\nSUMMARY:{todo_str}\nEND:VTODO")
+        target_calendar.add_todo(f"BEGIN:VTODO\n"+
+                                 f"UID:"+str(uuid.uuid4())+"@zfs-monitoring\n"+
+                                 f"DTSTAMP:"+str(datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"))+"\n"+
+                                 f"SUMMARY:{todo_str}\n"+
+                                 f"END:VTODO")
