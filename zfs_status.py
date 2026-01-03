@@ -16,9 +16,9 @@ def main() -> int:
 
         output_lines = []
         for line in process.stdout:
+            output_lines.append(line)
             sys.stdout.write(line)
             sys.stdout.flush()
-            output_lines.append(line)
 
         process.wait()
 
