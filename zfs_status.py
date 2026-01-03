@@ -6,7 +6,7 @@ import sys
 def main() -> int:
     try:
         process = subprocess.Popen(
-            "zpool status -x",
+            ["zpool", "status", "-x"],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
