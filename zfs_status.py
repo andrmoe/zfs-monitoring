@@ -24,8 +24,10 @@ def main() -> int:
 
         if process.returncode != 0:
             send_todo(f"zfs status exited with error code: {process.returncode}")
-        if output_lines and output_lines[0] != "all pools are healthy":
+        if output_lines and output_lines[0] != "all pools are healthy\n":
             send_todo("zfs status is unhealthy")
+        if not output_lines:
+            send_todo("zpool status returned nothing")
         return 0
 
     except BaseException as e:
